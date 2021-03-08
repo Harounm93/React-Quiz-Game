@@ -4,6 +4,7 @@ import LogOutButton from '../logoutButton/';
 import Profile from '../Profile/index';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
+import { Button } from '@material-ui/core';
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -59,12 +60,15 @@ function handleClick(isCorrect){
     <div className='App'>
       <header className='App-header'>
         <h1>Quiz Game </h1>
-        <div> 
-        <h2> {questions[currentQuestion].questionText}</h2>
+        <div className = "container"> 
+		<div className = "question-section"> <h2> {questions[currentQuestion].questionText}</h2></div>
+        
 
+		<div className = "anwser-section"> 
         {questions[currentQuestion].answerOptions.map((answerOption) => (
-							<button onClick={() => handleClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-              ))}
+							<Button className = "btn" variant="contained" color="primary" onClick={() => handleClick(answerOption.isCorrect)}>{answerOption.answerText}</Button>
+              ))}</div>
+
         </div>
         <Profile />
         <LogInButton />
