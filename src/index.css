@@ -5,9 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  text-align: center;
+background-color: #252d4a;
+width: 550px;
+margin-top: 40px;
+box-shadow: 10px,10px,42px,0px rgba( 0,0,0, 75);
+border-radius: 15px;
+justify-content: space-evenly;
+height: 500px;
+}
+.answer-section {
+
+  width: 100%;
+  font-size: 12px;
+/* background-color: #254a30 ; */
+display: flex;
+justify-content: space-around;
+margin-top: 120px;
+align-items: center;
+}
+
+.container{
+
+  background-color: #252d4a;
+}
+
+.question-section {
+  color: white;
+  
+}
+.btn {
+
+  border-radius: 15px;
+  
+}
+
+
+

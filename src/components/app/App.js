@@ -8,8 +8,9 @@ import { Button } from '@material-ui/core';
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
-  const [score, setScore] = useState()
+  const [score, setScore] = useState(0)
   const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [ showTotal, setShowTotal] = useState(false)
 
   const questions = [
 		{
@@ -48,34 +49,56 @@ function App() {
 				{ answerText: '7', isCorrect: true },
 			],
 		},
+		
 	];
 function handleClick(isCorrect){
   setCurrentQuestion(currentQuestion + 1)
   if (isCorrect === true) {
     setScore(score + 1);
   }
+  else {
+	setShowTotal(true);
+}
 }
 
   return (
+
+	// isAuthenticated && (
     <div className='App'>
+
+{showTotal ? (
+				<div className='score-section'>
+				<h1>You scored {score} out of {questions.length}</h1>
+
+				</div>
+			) : (
       <header className='App-header'>
-        <h1>Quiz Game </h1>
+        <h1>General Knowledge Quiz</h1>
         <div className = "container"> 
-		<div className = "question-section"> <h2> {questions[currentQuestion].questionText}</h2></div>
+		<div className = "question-section"> <h2> {questions[currentQuestion].questionText}</h2>
+		
+		<h3 className = "score">Score:{score} </h3>
+		</div>
         
 
-		<div className = "anwser-section"> 
+		<div className = "answer-section"> 
         {questions[currentQuestion].answerOptions.map((answerOption) => (
 							<Button className = "btn" variant="contained" color="primary" onClick={() => handleClick(answerOption.isCorrect)}>{answerOption.answerText}</Button>
               ))}</div>
 
         </div>
-        <Profile />
-        <LogInButton />
-        <LogOutButton />
+
+		<div className = "info">
+
+		<Profile />
+        
+		{isAuthenticated?  <LogOutButton />: <LogInButton />}
+		</div>
+        
+       
       </header>
-    </div>
+			 ) } </div>
   );
-}
+  }
 
 export default App;
