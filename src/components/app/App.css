@@ -34,7 +34,21 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 }
 
 .score-section{
-
-  justify-content: center;
+background-color: rgb(207, 210, 214);
+  
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   }
+
+  .reset {
+   margin-top: 50px;
+   justify-content: center;
+   align-items: baseline;
+   border-style: dotted;
+   }
+   
+   .btn-reset{
+     display: flex;
+     justify-content: center;
+   }

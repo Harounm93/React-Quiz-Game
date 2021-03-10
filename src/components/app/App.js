@@ -49,23 +49,36 @@ function App() {
         { answerText: '7', isCorrect: true },
       ],
     },
+    {
+    questionText: 'What club does Ronaldo play for?',
+    answerOptions: [
+      { answerText: 'Chelsea', isCorrect: false },
+      { answerText: 'Arsenal', isCorrect: false },
+      { answerText: 'Madrid', isCorrect: false },
+      { answerText: 'Juventus', isCorrect: true },
+    ],
+  },
   ];
   function handleClick(isCorrect) {
     setCurrentQuestion(currentQuestion + 1);
     if (isCorrect === true) {
       setScore(score + 1);
     }
-    
-    const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		}
 
-    else {
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+      
+    } else {
       setShowTotal(true);
     }
   }
 
+  function resetGame() {
+    setShowTotal(false);
+    setCurrentQuestion(0);
+    setScore(0);
+  }
   return (
     // isAuthenticated && (
     <div className='App'>
@@ -74,6 +87,20 @@ function App() {
           <h1>
             You scored {score} out of {questions.length}
           </h1>
+         
+          <div className='btn-reset'>
+            {' '}
+            <Button
+              ClassName='reset'
+              onClick={() => resetGame()}
+              variant='contained'
+              color='primary'
+            >
+              {' '}
+              Try again
+            </Button>
+          </div>
+
         </div>
       ) : (
         <header className='App-header'>
